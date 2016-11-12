@@ -21,7 +21,7 @@ public class ReflectionUtils {
 		return (Class) params[index];	
 	}
 	
-	public static Class getSuperClassGenericType(Class clazz) {
+	public static<T> Class<T> getSuperClassGenericType(Class clazz) {
 		return getSuperClassGenericType(clazz, 0);
 	}
 	
