@@ -10,13 +10,6 @@
 <script>
 
 	$(function(){
-		$("a").click(function(){
-			var serializeVal = $(":hidden").serialize();
-			var href = this.href + "&" + serializeVal;
-			window.location.href = href;
-			return false;
-		});
-		
 		$("#pageNo").change(function(){
 			var val = $(this).val();
 			val = $.trim(val);
@@ -37,15 +30,13 @@
 			//3. redirect
 			var href = "bookServlet?method=getBooks&pageNo=" + pageNo + "&" + $(":hidden").serialize();
 			window.location.href = href;
-		})
-	})
+		});
+	});
 	
 </script>
+<%@ include file="/commons/queryCondition.jsp" %>
 </head>
 <body>
-
-	<input type="hidden" name="minPrice" value="${param.minPrice }"/>
-	<input type="hidden" name="maxPrice" value="${param.maxPrice }"/>
 
 	<center>
 	
@@ -63,7 +54,7 @@
 			<c:forEach items="${bookpage.list }" var="book">
 				<tr>
 					<td>
-						<a href="">${book.title }</a>
+						<a href="bookServlet?method=getBook&pageNo=${bookpage.pageNo }&id=${book.id }">${book.title }</a>
 						<br>
 						${book.author }
 					</td>

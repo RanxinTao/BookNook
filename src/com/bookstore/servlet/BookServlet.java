@@ -36,6 +36,26 @@ public class BookServlet extends HttpServlet {
 		}
 	}
 	
+	protected void getBook(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String idStr = req.getParameter("id");
+		int id = -1;
+		Book book = null;
+		
+		try {
+			id = Integer.parseInt(idStr);
+		} catch (NumberFormatException e) {}
+		
+		if(id > 0)
+			book = bookService.getBook(id);
+		if(book == null) {
+			resp.sendRedirect(req.getContextPath() + "/error-1.jsp");
+			return;
+		}
+			
+		req.setAttribute("book", book);
+		req.getRequestDispatcher("/WEB-INF/pages/book.jsp").forward(req, resp);
+	}
+	
 	protected void getBooks(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String pageNoStr = req.getParameter("pageNo");
 		String minPriceStr = req.getParameter("minPrice");
