@@ -3,6 +3,7 @@ package com.bookstore.service;
 import com.bookstore.dao.BookDAO;
 import com.bookstore.dao.impl.BookDAOImpl;
 import com.bookstore.entity.Book;
+import com.bookstore.entity.ShoppingCart;
 import com.bookstore.web.CriteriaBook;
 import com.bookstore.web.Page;
 
@@ -16,5 +17,14 @@ public class BookService {
 
 	public Book getBook(int id) {
 		return bookDAO.getBook(id);
+	}
+
+	public boolean addToCart(int id, ShoppingCart sc) {
+		Book book = bookDAO.getBook(id);
+		if(book != null) {
+			sc.addBook(book);
+			return true;
+		}
+		return false;
 	}
 }

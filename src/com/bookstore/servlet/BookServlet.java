@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bookstore.entity.Book;
+import com.bookstore.entity.ShoppingCart;
 import com.bookstore.service.BookService;
+import com.bookstore.web.BookStoreWebUtils;
 import com.bookstore.web.CriteriaBook;
 import com.bookstore.web.Page;
 
@@ -34,6 +36,32 @@ public class BookServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	protected void addToCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//1. get book id
+		String idStr = req.getParameter("id");
+		int id = -1;
+		boolean flag = false;
+		
+		try {
+			id = Integer.parseInt(idStr);
+		} catch (Exception e) {}
+		
+		if(id > 0) {
+			//2. get shopping cart object
+			ShoppingCart sc = BookStoreWebUtils.getShoppingCart(req);
+			//3. call BookService addToCart() method, add book into shopping cart. 
+			flag = bookService.addToCart(id, sc); //if the book associated with this id is found, flag is set to true
+		}
+		
+		if(flag) {
+			//4. call getBooks() method
+			getBooks(req, resp);
+			return;
+		}
+		
+		resp.sendRedirect(req.getContentType() + "/error-1.jsp");	
 	}
 	
 	protected void getBook(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

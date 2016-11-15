@@ -37,9 +37,18 @@
 <%@ include file="/commons/queryCondition.jsp" %>
 </head>
 <body>
-
+	
 	<center>
 	
+		<c:if test="${param.title != null}">
+			You have successfully added ${param.title } into your shopping cart.
+			<br><br>
+		</c:if>
+		
+		<c:if test="${!empty sessionScope.ShoppingCart }">
+			Your shopping cart has ${sessionScope.ShoppingCart.totalBookNo } book(s), <a href="cart.jsp?pageNo=${bookpage.pageNo }">view your shopping cart</a>
+		</c:if>
+		
 		<br><br>
 		<form action="bookServlet?method=getBooks" method="post">
 			Price: 
@@ -59,7 +68,7 @@
 						${book.author }
 					</td>
 					<td>${book.price }</td>
-					<td><a href="">add to cart</a></td>
+					<td><a href="bookServlet?method=addToCart&pageNo=${bookpage.pageNo }&id=${book.id }&title=${book.title }">add to cart</a></td>
 				</tr>
 			</c:forEach>
 		</table>
