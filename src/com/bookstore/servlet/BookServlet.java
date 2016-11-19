@@ -1,7 +1,6 @@
 package com.bookstore.servlet;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import javax.servlet.ServletException;
@@ -36,6 +35,36 @@ public class BookServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	protected void clear(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		ShoppingCart sc = BookStoreWebUtils.getShoppingCart(req);
+		bookService.clearShoppingCart(sc);
+		
+		req.getRequestDispatcher("/WEB-INF/pages/emptycart.jsp").forward(req, resp);
+	}
+	
+	protected void remove(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String idStr = req.getParameter("id");
+		int id = -1;
+		
+		try {
+			id = Integer.parseInt(idStr);
+		} catch (Exception e) {}
+		
+		ShoppingCart sc = BookStoreWebUtils.getShoppingCart(req);
+		bookService.removeItemFromShoppingCart(sc, id);
+		
+		if(sc.isEmpty()) {
+			req.getRequestDispatcher("/WEB-INF/pages/emptycart.jsp").forward(req, resp);
+			return;
+		}
+		
+		req.getRequestDispatcher("WEB-INF/pages/cart.jsp").forward(req, resp);
+	}
+	
+	protected void toCartPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getRequestDispatcher("WEB-INF/pages/cart.jsp").forward(req, resp);
 	}
 	
 	protected void addToCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

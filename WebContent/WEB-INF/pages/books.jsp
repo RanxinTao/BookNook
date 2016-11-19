@@ -20,7 +20,7 @@
 				flag = false;
 			//2. verify if val falls within a legal range (1-totalPageNo)
 			var pageNo = parseInt(val);
-			if(pageNo < 1 || pageNo > parseInt("${bookpage.totalPageNo}"))
+			if(pageNo < 1 || pageNo > parseInt("${bookpage.totalPageNo }"))
 				flag = false;
 			if(!flag) {
 				alert("input is not a valid number");
@@ -45,8 +45,8 @@
 			<br><br>
 		</c:if>
 		
-		<c:if test="${!empty sessionScope.ShoppingCart }">
-			Your shopping cart has ${sessionScope.ShoppingCart.totalBookNo } book(s), <a href="cart.jsp?pageNo=${bookpage.pageNo }">view your shopping cart</a>
+		<c:if test="${!empty sessionScope.ShoppingCart.books }">
+			Your shopping cart has ${sessionScope.ShoppingCart.totalBookNo } book(s), <a href="bookServlet?method=toCartPage&pageNo=${bookpage.pageNo }">view your shopping cart</a>
 		</c:if>
 		
 		<br><br>

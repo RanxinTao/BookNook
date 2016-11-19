@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,13 +8,9 @@
 </head>
 <body>
 
-	quantity: ${sessionScope.ShoppingCart.totalBookNo }
-	<br><br>
+	<h4>Your Shopping cart is empty.</h4>
 	
-	<c:forEach items="${sessionScope.ShoppingCart.items }" var="item">
-		${item.book.title } - ${item.book.price } - ${item.quantity }
-		<br>
-	</c:forEach>
-	
+	<a href="index.jsp">Continue Shopping</a>
+
 </body>
 </html>
