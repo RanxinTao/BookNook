@@ -46,7 +46,7 @@
 		</c:if>
 		
 		<c:if test="${!empty sessionScope.ShoppingCart.books }">
-			Your shopping cart has ${sessionScope.ShoppingCart.totalBookNo } book(s), <a href="bookServlet?method=toCartPage&pageNo=${bookpage.pageNo }">view your shopping cart</a>
+			Your shopping cart has ${sessionScope.ShoppingCart.totalBookNo } book(s), <a href="bookServlet?method=forwardPage&page=cart&pageNo=${bookpage.pageNo }">view your shopping cart</a>
 		</c:if>
 		
 		<br><br>
@@ -78,17 +78,17 @@
 		&nbsp;&nbsp;
 		
 		<c:if test="${bookpage.hasPrevPage() }">
-			<a href="bookServlet?method=getBooks&pageNo=1">first page</a>
+			<a href="bookServlet?method=getBooks&pageNo=1">First</a>
 			&nbsp;&nbsp;
-			<a href="bookServlet?method=getBooks&pageNo=${bookpage.prevPageNo }">previous page</a>	
+			<a href="bookServlet?method=getBooks&pageNo=${bookpage.prevPageNo }">Previous</a>	
 		</c:if>
 		
 		&nbsp;&nbsp;
 		
 		<c:if test="${bookpage.hasNextPage() }">
-			<a href="bookServlet?method=getBooks&pageNo=${bookpage.nextPageNo }">next page</a>
+			<a href="bookServlet?method=getBooks&pageNo=${bookpage.nextPageNo }">Next</a>
 			&nbsp;&nbsp;
-			<a href="bookServlet?method=getBooks&pageNo=${bookpage.totalPageNo }">last page</a>	
+			<a href="bookServlet?method=getBooks&pageNo=${bookpage.totalPageNo }">Last</a>	
 		</c:if>
 		
 		&nbsp;&nbsp;

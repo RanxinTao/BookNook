@@ -120,7 +120,6 @@ public class BaseDAO<T> implements DAO<T> {
 		} finally {
 			JDBCUtils.close(conn);
 		}
-		
 	}
 
 }

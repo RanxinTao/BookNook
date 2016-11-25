@@ -1,7 +1,5 @@
 package com.bookstore.test;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 import com.bookstore.dao.BookDAO;
@@ -32,9 +30,9 @@ public class BookDAOTest {
 	}
 
 	@Test
-	public void testGetStoreNo() {
-		int storeNumber = bookDAO.getStoreNo(5);
-		System.out.println(storeNumber);
+	public void testGetStockNo() {
+		int stockNo = bookDAO.getStockNo(5);
+		System.out.println(stockNo);
 	}
 
 }

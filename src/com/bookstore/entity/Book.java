@@ -10,7 +10,7 @@ public class Book {
 	private float price;
 	private Date publishingDate;
 	private int salesAmount;
-	private int storeNumber;
+	private int stockNumber;
 	private String remark;
 	
 	public int getId() {
@@ -61,12 +61,12 @@ public class Book {
 		this.salesAmount = salesAmount;
 	}
 	
-	public int getStoreNumber() {
-		return storeNumber;
+	public int getStockNumber() {
+		return stockNumber;
 	}
 	
-	public void setStoreNumber(int storeNumber) {
-		this.storeNumber = storeNumber;
+	public void setStockNumber(int stockNumber) {
+		this.stockNumber = stockNumber;
 	}
 	
 	public String getRemark() {
@@ -81,8 +81,8 @@ public class Book {
 	public String toString() {
 		return "Book [id=" + id + ", author=" + author + ", title=" + title
 				+ ", price=" + price + ", publishingDate=" + publishingDate
-				+ ", salesAmount=" + salesAmount + ", storeNumber="
-				+ storeNumber + ", remark=" + remark + "]\n\n";
+				+ ", salesAmount=" + salesAmount + ", stockNumber="
+				+ stockNumber + ", remark=" + remark + "]\n\n";
 	}
 	
 }

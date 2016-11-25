@@ -1,7 +1,5 @@
 package com.bookstore.test;
 
-import static org.junit.Assert.*;
-
 import java.sql.Date;
 import java.util.List;
 
@@ -29,7 +27,7 @@ public class BaseDAOTest {
 
 	@Test
 	public void testQuery() {
-		String sql = "SELECT id, author, title, price, publishingDate, salesAmount, storeNumber, remark "
+		String sql = "SELECT id, author, title, price, publishingDate, salesAmount, stockNumber, remark "
 				+ "FROM mybooks WHERE id = ?";
 		Book book = bookDAOImpl.query(sql, 1);
 		System.out.println(book);
@@ -37,7 +35,7 @@ public class BaseDAOTest {
 
 	@Test
 	public void testQueryList() {
-		String sql = "SELECT id, author, title, price, publishingDate, salesAmount, storeNumber, remark "
+		String sql = "SELECT id, author, title, price, publishingDate, salesAmount, stockNumber, remark "
 				+ "FROM mybooks WHERE id < ?";
 		List<Book> books = bookDAOImpl.queryList(sql, 4);
 		System.out.println(books);
@@ -52,7 +50,7 @@ public class BaseDAOTest {
 
 	@Test
 	public void testBatch() {
-		String sql = "UPDATE mybooks SET salesAmount = ?, storeNumber = ? WHERE id = ?";
+		String sql = "UPDATE mybooks SET salesAmount = ?, stockNumber = ? WHERE id = ?";
 		bookDAOImpl.batch(sql, new Object[]{1, 1, 1}, new Object[]{2, 2, 2}, new Object[]{3, 3, 3});
 	}
 

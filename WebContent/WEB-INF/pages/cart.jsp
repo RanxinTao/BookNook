@@ -120,7 +120,7 @@
 					<a href="bookServlet?method=clear">Clear Shopping Cart</a>
 					&nbsp;&nbsp;
 					
-					<a href="">Check Out</a>
+					<a href="bookServlet?method=forwardPage&page=checkout">Check Out</a>
 					&nbsp;&nbsp;
 				</td>
 			</tr>

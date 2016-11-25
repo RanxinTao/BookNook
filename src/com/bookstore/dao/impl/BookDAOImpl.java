@@ -11,7 +11,7 @@ public class BookDAOImpl extends BaseDAO<Book> implements BookDAO {
 
 	@Override
 	public Book getBook(int id) {
-		String sql = "SELECT id, author, title, price, publishingDate, salesAmount, storeNumber, remark "
+		String sql = "SELECT id, author, title, price, publishingDate, salesAmount, stockNumber, remark "
 				+ "FROM mybooks WHERE id = ?";
 		return query(sql, id);
 	}
@@ -35,14 +35,14 @@ public class BookDAOImpl extends BaseDAO<Book> implements BookDAO {
 
 	@Override
 	public List<Book> getPageList(CriteriaBook cb, int pageSize) {
-		String sql = "SELECT id, author, title, price, publishingDate, salesAmount, storeNumber, remark "
+		String sql = "SELECT id, author, title, price, publishingDate, salesAmount, stockNumber, remark "
 				+ "FROM mybooks WHERE price >= ? AND price <= ? LIMIT ?, ?";
 		return queryList(sql, cb.getMinPrice(), cb.getMaxPrice(), (cb.getPageNo()-1)*pageSize, pageSize);
 	}
 
 	@Override
-	public int getStoreNo(int id) {
-		String sql = "SELECT storeNumber FROM mybooks WHERE id = ?";
+	public int getStockNo(int id) {
+		String sql = "SELECT stockNumber FROM mybooks WHERE id = ?";
 		return getSingleVal(sql, id);
 	}
 	

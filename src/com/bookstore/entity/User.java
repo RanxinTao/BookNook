@@ -7,15 +7,15 @@ public class User {
 	
 	private int userId;
 	private String username;
-	private int accountId;
+	private int accountNo;
 	private Set<Trade> trades = new LinkedHashSet<Trade>();
 	
 	public User() {}
 	
-	public User(int userId, String username, int accountId) {
+	public User(int userId, String username, int accountNo) {
 		this.userId = userId;
 		this.username = username;
-		this.accountId = accountId;
+		this.accountNo = accountNo;
 	}
 	
 	public void setTrades(Set<Trade> trades) {
@@ -42,18 +42,18 @@ public class User {
 		this.username = username;
 	}
 
-	public int getAccountId() {
-		return accountId;
+	public int getAccountNo() {
+		return accountNo;
 	}
 
-	public void setAccountId(int accountId) {
-		this.accountId = accountId;
+	public void setAccountNo (int accountNo) {
+		this.accountNo = accountNo;
 	}
 
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", username=" + username
-				+ ", accountId=" + accountId + "]";
+				+ ", accountNo=" + accountNo + "]";
 	}
 
 }

@@ -4,8 +4,8 @@ import com.bookstore.entity.Account;
 
 public interface AccountDAO {
 	
-	public abstract Account getAccount(int accountId);
+	public abstract Account getAccount(int accountNo);
 	
-	public abstract void updateBalance(int accountId, float amount);
+	public abstract void updateBalance(int accountNo, float amount);
 	
 }

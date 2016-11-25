@@ -2,17 +2,17 @@ package com.bookstore.entity;
 
 public class Account {
 	
-	private int accountId;
+	private int accountNo;
 	private int balance;
 	
 	public Account() {}
 	
-	public int getAccountId() {
-		return accountId;
+	public int getAccountNo() {
+		return accountNo;
 	}
 	
-	public void setAccountId(int accountId) {
-		this.accountId = accountId;
+	public void setAccountNo(int accountNo) {
+		this.accountNo = accountNo;
 	}
 	
 	public int getBalance() {
@@ -23,14 +23,14 @@ public class Account {
 		this.balance = balance;
 	}
 	
-	public Account(int accountId, int balance) {
-		this.accountId = accountId;
+	public Account(int accountNo, int balance) {
+		this.accountNo = accountNo;
 		this.balance = balance;
 	}
 	
 	@Override
 	public String toString() {
-		return "Account [accountId=" + accountId + ", balance=" + balance + "]";
+		return "Account [accountNo=" + accountNo + ", balance=" + balance + "]";
 	}
 	
 }
